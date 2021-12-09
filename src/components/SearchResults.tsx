@@ -1,8 +1,15 @@
 import SingleCard from "./SingleCard";
 import data from "../mock-json/mock.json";
 
-export default function AllCards() {
-  const cards = data.map((currentCompany) => {
+export default function SearchResults(props: {
+  filteredCompanies: Array<object>;
+  setOpportunityNumber: Function;
+  searchToggle: boolean;
+}) {
+  props.searchToggle
+    ? props.setOpportunityNumber(props.filteredCompanies.length)
+    : props.setOpportunityNumber(data.length);
+  const cards = props.filteredCompanies.map((currentCompany: any) => {
     return (
       <div key={currentCompany.nome} className="col-3 d-flex">
         <SingleCard
