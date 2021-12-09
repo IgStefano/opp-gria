@@ -1,13 +1,22 @@
+import { useParams, useNavigate, createSearchParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import data from "../mock-json/mock.json";
 
 export default function SearchBar(props: {
   filterCompaniesByName: any;
   filterCompaniesByPlace: any;
+  companies: Array<Object>;
   searchToggle: boolean;
   setSearchToggle: any;
   setOpportunityNumber: Function;
 }) {
+  const navigate = useNavigate();
+
+  const searchOpportunities = () =>
+    navigate({
+      pathname: "/opportunities",
+      search: `?${createSearchParams(searchParams)}`,
+    });
+
   const [inputByName, setInputByName] = useState("");
   const [inputByPlace, setInputByPlace] = useState("");
 
@@ -22,18 +31,12 @@ export default function SearchBar(props: {
   function resetFilters() {
     setInputByName("");
     setInputByPlace("");
-    props.setSearchToggle(false);
-    props.setOpportunityNumber(data.length);
+    navigate("/opportunities");
+    props.setOpportunityNumber(props.companies.length);
   }
 
   function submitSearch(event: React.MouseEvent) {
-    props.setSearchToggle(true);
-  }
-
-  function handleKeyPressSearch(event: any) {
-    if (event.key === "Enter") {
-      props.setSearchToggle(true);
-    }
+    searchOpportunities();
   }
 
   useEffect(() => {
@@ -44,6 +47,8 @@ export default function SearchBar(props: {
     props.filterCompaniesByPlace(inputByPlace);
   }, [inputByPlace]);
 
+  const searchParams = { name: inputByName, place: inputByPlace };
+
   return (
     <div className="pt-5">
       <div>
@@ -51,14 +56,12 @@ export default function SearchBar(props: {
         <div>
           <input
             onChange={handleChangeByName}
-            onKeyPress={handleKeyPressSearch}
             value={inputByName}
             className="me-3"
             placeholder="Cargo, habilidades ou empresa"
           ></input>
           <input
             onChange={handleChangeByPlace}
-            onKeyPress={handleKeyPressSearch}
             value={inputByPlace}
             className="me-3"
             placeholder="País, cidade ou estado"

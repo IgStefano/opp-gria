@@ -5,7 +5,6 @@ import SearchBar from "./SearchBar";
 import AllCards from "./AllCards";
 import data from "../mock-json/mock.json";
 import PageBrowser from "./PageBrowser";
-import SearchResults from "./SearchResults";
 
 export default function Opportunities() {
   const [opportunityNumber, setOpportunityNumber] = useState(data.length);
@@ -19,10 +18,13 @@ export default function Opportunities() {
       .replace(/[\u0300-\u036f]/g, "");
   }
 
-  const [filteredCompanies, setFilteredCompanies] = useState([{}]);
+  const [filteredCompaniesByName, setFilteredCompaniesByName] = useState([{}]);
+  const [filteredCompaniesByPlace, setFilteredCompaniesByPlace] = useState([
+    {},
+  ]);
 
   function filterCompaniesByName(input: string) {
-    const searchResult = data.filter(
+    const searchResultByName = data.filter(
       (currentCompany) =>
         toNormalizeInput(currentCompany.nome).includes(
           toNormalizeInput(input)
@@ -32,16 +34,14 @@ export default function Opportunities() {
         ) ||
         toNormalizeInput(currentCompany.nivel).includes(toNormalizeInput(input))
     );
-    console.log(searchResult);
-    setFilteredCompanies([...searchResult]);
+    setFilteredCompaniesByName(searchResultByName);
   }
 
   function filterCompaniesByPlace(input: string) {
-    const searchResult = data.filter((currentCompany) =>
+    const searchResultByPlace = data.filter((currentCompany) =>
       toNormalizeInput(currentCompany.local).includes(toNormalizeInput(input))
     );
-    console.log(searchResult);
-    setFilteredCompanies([...searchResult]);
+    setFilteredCompaniesByPlace(searchResultByPlace);
   }
 
   return (
@@ -49,7 +49,6 @@ export default function Opportunities() {
       <Navbar />
       <div className="container pt-5">
         <SearchBar
-          companies={data}
           filterCompaniesByName={filterCompaniesByName}
           filterCompaniesByPlace={filterCompaniesByPlace}
           setSearchToggle={setSearchToggle}
@@ -57,15 +56,12 @@ export default function Opportunities() {
           setOpportunityNumber={setOpportunityNumber}
         />
         <h2>Encontramos {opportunityNumber} oportunidades cadastradas</h2>
-        {!searchToggle ? (
-          <AllCards />
-        ) : (
-          <SearchResults
-            setOpportunityNumber={setOpportunityNumber}
-            filteredCompanies={filteredCompanies}
-            searchToggle={searchToggle}
-          />
-        )}
+        <AllCards
+          setOpportunityNumber={setOpportunityNumber}
+          filteredCompaniesByName={filteredCompaniesByName}
+          filteredCompaniesByPlace={filteredCompaniesByPlace}
+          searchToggle={searchToggle}
+        />
       </div>
       <PageBrowser />
     </div>
