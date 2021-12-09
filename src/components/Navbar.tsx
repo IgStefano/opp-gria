@@ -16,22 +16,22 @@ export default function NavBar() {
         <div className="d-flex justify-content-between">
           <ul className="list-inline pe-5">
             <li>
-              <button>
+              <button className="btn btn-light">
                 <span>Oportunidades</span>
               </button>
             </li>
           </ul>
           <ul className="list-inline pe-5">
             <li>
-              <button onClick={handleClick}>
+              <div className="btn btn-light" onClick={handleClick}>
                 <span>Login</span>
                 {showMenu ? (
-                  <div className="menu">
-                    <button> Candidato </button>
-                    <button> Empresa </button>
+                  <div className="menu d-flex flex-column">
+                    <button className="btn btn-dark my-1"> Candidato </button>
+                    <button className="btn btn-dark my-1"> Empresa </button>
                   </div>
                 ) : null}
-              </button>
+              </div>
             </li>
           </ul>
         </div>
