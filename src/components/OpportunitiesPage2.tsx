@@ -6,12 +6,12 @@ import AllCards from "./AllCards";
 import data from "../mock-json/mock.json";
 import PageBrowser from "./PageBrowser";
 
-export default function Opportunities() {
+export default function OpportunitiesPage2() {
   const [opportunityNumber, setOpportunityNumber] = useState(data.length);
 
   const [searchToggle, setSearchToggle] = useState(false);
 
-  const pageRef = useRef(1);
+  const pageRef = useRef(2);
 
   function toNormalizeInput(input: string) {
     return input
@@ -59,7 +59,7 @@ export default function Opportunities() {
         />
         <h2>Encontramos {opportunityNumber} oportunidades cadastradas</h2>
         <AllCards
-          currentPage={0}
+          currentPage={1}
           setOpportunityNumber={setOpportunityNumber}
           filteredCompaniesByName={filteredCompaniesByName}
           filteredCompaniesByPlace={filteredCompaniesByPlace}

@@ -1,87 +1,54 @@
-import { NavLink, useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { NavLink } from "react-router-dom";
 
-export default function PageBrowser() {
-  const navigate = useNavigate();
-
-  let search = window.location.search;
-  let params = new URLSearchParams(search);
-
-  const [page, setPage] = useState(parseInt("" + params.get("page")));
-
-  const paginate = (n: number) => {
-    setPage(n);
-    navigate({
-      pathname: "/",
-      search: "?page=" + n,
-    });
-  };
-
-  // return (
-  //   <div>
-  //     <div
-  //       onClick={() => paginate(1)}
-  //       style={page === 1 ? { fontSize: 30 } : {}}
-  //     >
-  //       1
-  //     </div>
-  //     <div
-  //       onClick={() => paginate(2)}
-  //       style={page === 2 ? { fontSize: 30 } : {}}
-  //     >
-  //       2
-  //     </div>
-  //   </div>
-  // );
-
+export default function PageBrowser(props: { pageRef: any }) {
   return (
     <nav aria-label="Page navigation" className="d-flex justify-content-center">
       <ul className="pagination">
         <li className="page-item">
           <NavLink
             className="page-link"
-            onClick={() => paginate(page > 1 ? page - 1 : 1)}
-            to={`?page=${page > 1 ? page - 1 : 1}`}
+            onClick={() =>
+              props.pageRef.current > 1 ? (props.pageRef.current = 1) : null
+            }
+            to={`${props.pageRef > 1 ? "/opportunities/1" : ""}`}
             aria-label="Previous"
           >
             <span aria-hidden="true">&laquo;</span>
           </NavLink>
         </li>
-        <li className="page-item">
+        <li
+          className={`page-item ${props.pageRef.current === 1 ? "active" : ""}`}
+        >
           <NavLink
             className="page-link"
-            onClick={() => paginate(1)}
-            to={`?page=1`}
+            onClick={() => (props.pageRef.current = 1)}
+            to={`/opportunities/1`}
             aria-label="1"
           >
             <span aria-hidden="true">1</span>
           </NavLink>
         </li>
-        <li className="page-item">
+        <li
+          className={`page-item ${props.pageRef.current === 2 ? "active" : ""}`}
+        >
           <NavLink
             className="page-link"
-            onClick={() => paginate(2)}
-            to={`?page=2`}
+            onClick={() => (props.pageRef.current = 2)}
+            to={"/opportunities/2"}
             aria-label="2"
           >
             <span aria-hidden="true">2</span>
           </NavLink>
         </li>
+
         <li className="page-item">
           <NavLink
             className="page-link"
-            onClick={() => paginate(3)}
-            to={`?page=3`}
-            aria-label="3"
-          >
-            <span aria-hidden="true">3</span>
-          </NavLink>
-        </li>
-        <li className="page-item">
-          <NavLink
-            className="page-link"
-            onClick={() => paginate(page < 3 ? page + 1 : 3)}
-            to={`?page=${page < 3 ? page + 1 : 3}`}
+            style={{}}
+            onClick={() =>
+              props.pageRef.current < 2 ? (props.pageRef.current = 2) : null
+            }
+            to={`${props.pageRef.current < 2 ? "/opportunities/2" : 2}`}
             aria-label="Next"
           >
             <span aria-hidden="true">&raquo;</span>
