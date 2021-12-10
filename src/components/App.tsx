@@ -8,6 +8,8 @@ function App() {
       {
         <Routes>
           <Route path="/opportunities/" element={<Opportunities />} />
+
+          <Route path="/opportunities/:page?" element={<Opportunities />} />
         </Routes>
       }
     </div>
