@@ -1,5 +1,5 @@
-import SingleCard from "./SingleCard";
-import data from "../mock-json/mock.json";
+import SingleCard from "../SingleCard";
+import data from "../../mock-json/mock.json";
 
 export default function SearchResults(props: {
   filteredCompanies: Array<object>;
