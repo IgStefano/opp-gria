@@ -1,13 +1,90 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap");
+
+* {
+  font-family: "Roboto";
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans",
+    "Droid Sans", "Helvetica Neue", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.bodybg {
+  background-color: #fcfcfc;
+}
+
+.navfont {
+  font-family: "Roboto";
+  font-weight: 500;
+  color: white;
+}
+
+.navbarbg {
+  background-image: linear-gradient(to right, #920d65, #d81c98);
+}
+@media screen and (max-width: 767px) {
+  .navbarMenuMobile {
+    display: none;
+    visibility: hidden;
+  }
+  .navbarHamburger {
+    display: inline;
+    visibility: visible;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .navbarMenuHamburgerBrowser {
+    display: none;
+    visibility: hidden;
+  }
+}
+
+.searchbg {
+  background-color: #fff;
+  box-shadow: grey;
+}
+
+@media screen and (max-width: 700px) {
+  .searchMobile {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-bottom: 40px;
+  }
+
+  .searchBtnMobile {
+    display: flex;
+    flex-direction: row;
+    margin-top: 5px;
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .cardMobile {
+    width: 100%;
+  }
+  .searchBtnMobile {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+  }
+}
+.paginationItem {
+  text-decoration: none;
+}
+
+.paginationItemSelected {
+  background-color: #590a9d !important;
+  color: #fff !important;
 }

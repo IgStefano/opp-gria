@@ -45,30 +45,65 @@ export default function SearchBar(props: {
   }, [inputByPlace]);
 
   return (
-    <div className="pt-5">
+    <div
+      style={{ boxShadow: "0px 2px 0px rgba(17,17,26,0.1)" }}
+      className="p-3 searchbg rounded"
+    >
       <div>
-        <p>Pesquisar por:</p>
-        <div>
-          <input
-            onChange={handleChangeByName}
-            onKeyPress={handleKeyPressSearch}
-            value={inputByName}
-            className="me-3"
-            placeholder="Cargo, habilidades ou empresa"
-          ></input>
-          <input
-            onChange={handleChangeByPlace}
-            onKeyPress={handleKeyPressSearch}
-            value={inputByPlace}
-            className="me-3"
-            placeholder="País, cidade ou estado"
-          ></input>
-          <button onClick={resetFilters} className="me-3">
-            LIMPAR FILTROS
-          </button>
-          <button onClick={submitSearch} className="mx-3">
-            PESQUISAR
-          </button>
+        <div className="pb-md-4 pb-sm-4 pb-xs-4 ">
+          <p style={{ fontSize: "0.9rem" }}>Pesquisar por:</p>
+        </div>
+        <div className="d-flex justify-content-between col-lg-12 searchMobile">
+          <div className="col-lg-9 d-flex searchMobile">
+            <div className="col-lg-6 ">
+              <input
+                onChange={handleChangeByName}
+                onKeyPress={handleKeyPressSearch}
+                value={inputByName}
+                style={{ width: "90%" }}
+                className="me-3 border-0 mb-sm-5 mb-xs-5 border-bottom border-bottom-dark searchMobile"
+                placeholder="Cargo, habilidades ou empresa"
+              ></input>
+            </div>
+            <div className="col-lg-6">
+              <input
+                onChange={handleChangeByPlace}
+                onKeyPress={handleKeyPressSearch}
+                value={inputByPlace}
+                style={{ width: "90%" }}
+                className="me-3 mb-sm-3 mb-xs-3 border-0 border-bottom border-bottom-dark"
+                placeholder="País, cidade ou estado"
+              ></input>
+            </div>
+          </div>
+          <div className="col-lg-3 searchBtnMobile">
+            <button
+              style={{
+                backgroundColor: "white",
+                color: "#590A9D",
+                fontSize: "12px",
+                fontWeight: "500",
+                border: "1px solid #590A9D",
+              }}
+              onClick={resetFilters}
+              className="me-md-4 me-sm-4 py-1 px-3 rounded searchBtnMobile"
+            >
+              LIMPAR FILTROS
+            </button>
+            <button
+              style={{
+                backgroundColor: " #590A9D",
+                color: "white",
+                fontSize: "12px",
+                fontWeight: "500",
+                border: "1px solid #590A9D",
+              }}
+              onClick={submitSearch}
+              className="ms-md-2 ms-sm-2 py-1 px-3 rounded searchBtnMobile"
+            >
+              PESQUISAR
+            </button>
+          </div>
         </div>
       </div>
     </div>

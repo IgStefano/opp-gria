@@ -21,7 +21,11 @@ export default function AllCards(props: {
 
   const allCards = data.map((currentCompany) => {
     return (
-      <div key={currentCompany.nome} className="col-3 d-flex">
+      <div
+        key={currentCompany.nome}
+        className="col-lg-3 col-md-4 col-sm-6 col-xs-12
+        d-flex justify-content-between rounded"
+      >
         <SingleCard
           nome={currentCompany.nome}
           cargo={currentCompany.cargo}
@@ -37,7 +41,10 @@ export default function AllCards(props: {
 
   const cards = filteredCards.map((currentCompany) => {
     return (
-      <div key={currentCompany.nome} className="col-3 d-flex">
+      <div
+        key={currentCompany.nome}
+        className="col-lg-3 col-md-4 col-sm-6 col-xs-12 cardMobile w-100"
+      >
         <SingleCard
           nome={currentCompany.nome}
           cargo={currentCompany.cargo}
