@@ -1,60 +1,120 @@
 import { NavLink } from "react-router-dom";
+import Pagination from "@mui/material/Pagination";
+import PaginationItem from "@mui/material/PaginationItem";
+
+import Stack from "@mui/material/Stack";
 
 export default function PageBrowser(props: { pageRef: any }) {
   return (
-    <nav aria-label="Page navigation" className="d-flex justify-content-center">
-      <ul className="pagination">
-        <li className="page-item">
+    <div style={{ height: "60px" }} className="text-decoration-none mt-5 pb-4">
+      <Stack spacing={2}>
+        <div className="h-100 d-flex justify-content-center flex-row align-items-center">
           <NavLink
-            className="page-link"
+            className="text-decoration-none"
             onClick={() =>
               props.pageRef.current > 1 ? (props.pageRef.current = 1) : null
             }
-            to={`${props.pageRef > 1 ? "/opportunities/1" : ""}`}
-            aria-label="Previous"
+            to={`${props.pageRef.current > 1 ? "/opportunities/1" : ""}`}
           >
-            <span aria-hidden="true">&laquo;</span>
+            <PaginationItem
+              disabled={props.pageRef.current === 1}
+              type={"previous"}
+              size={"large"}
+            />
           </NavLink>
-        </li>
-        <li
-          className={`page-item ${props.pageRef.current === 1 ? "active" : ""}`}
-        >
           <NavLink
-            className="page-link"
+            className="text-decoration-none"
             onClick={() => (props.pageRef.current = 1)}
             to={`/opportunities/1`}
-            aria-label="1"
           >
-            <span aria-hidden="true">1</span>
+            <PaginationItem
+              className={`paginationItem ${
+                props.pageRef.current === 1 ? "paginationItemSelected" : ""
+              }`}
+              page={1}
+              selected={props.pageRef.current === 1}
+              size={"large"}
+            />
           </NavLink>
-        </li>
-        <li
-          className={`page-item ${props.pageRef.current === 2 ? "active" : ""}`}
-        >
           <NavLink
-            className="page-link"
+            className="text-decoration-none"
             onClick={() => (props.pageRef.current = 2)}
             to={"/opportunities/2"}
-            aria-label="2"
           >
-            <span aria-hidden="true">2</span>
+            <PaginationItem
+              className={`paginationItem ${
+                props.pageRef.current === 2 ? "paginationItemSelected" : ""
+              }`}
+              selected={props.pageRef.current === 2}
+              page={2}
+              size={"large"}
+            />
           </NavLink>
-        </li>
-
-        <li className="page-item">
           <NavLink
-            className="page-link"
-            style={{}}
             onClick={() =>
               props.pageRef.current < 2 ? (props.pageRef.current = 2) : null
             }
             to={`${props.pageRef.current < 2 ? "/opportunities/2" : 2}`}
-            aria-label="Next"
           >
-            <span aria-hidden="true">&raquo;</span>
+            <PaginationItem
+              disabled={props.pageRef.current === 2}
+              type={"next"}
+              size={"large"}
+            />
           </NavLink>
-        </li>
-      </ul>
-    </nav>
+        </div>
+      </Stack>
+    </div>
+
+    // <nav aria-label="Page navigation" className="d-flex justify-content-center">
+    //   <ul className="pagination">
+    //     <li className="">
+    //       <NavLink
+    //         className=""
+    //         onClick={() =>
+    //           props.pageRef.current > 1 ? (props.pageRef.current = 1) : null
+    //         }
+    //         to={`${props.pageRef > 1 ? "/opportunities/1" : ""}`}
+    //         aria-label="Previous"
+    //       >
+    //         <span aria-hidden="true">&laquo;</span>
+    //       </NavLink>
+    //     </li>
+    //     <li className={` ${props.pageRef.current === 1 ? "" : ""}`}>
+    //       <NavLink
+    //         className=""
+    //         onClick={() => (props.pageRef.current = 1)}
+    //         to={`/opportunities/1`}
+    //         aria-label="1"
+    //       >
+    //         <span aria-hidden="true">1</span>
+    //       </NavLink>
+    //     </li>
+    //     <li className={` ${props.pageRef.current === 2 ? "" : ""}`}>
+    //       <NavLink
+    //         className=""
+    //         onClick={() => (props.pageRef.current = 2)}
+    //         to={"/opportunities/2"}
+    //         aria-label="2"
+    //       >
+    //         <span aria-hidden="true">2</span>
+    //       </NavLink>
+    //     </li>
+
+    //     <li className="">
+    //       <NavLink
+    //         className=""
+    //         style={{}}
+    //         onClick={() =>
+    //           props.pageRef.current < 2 ? (props.pageRef.current = 2) : null
+    //         }
+    //         to={`${props.pageRef.current < 2 ? "/opportunities/2" : 2}`}
+    //         aria-label="Next"
+    //       >
+    //         <span aria-hidden="true">&raquo;</span>
+    //       </NavLink>
+    //     </li>
+    //   </ul>
+    // </nav>
   );
 }

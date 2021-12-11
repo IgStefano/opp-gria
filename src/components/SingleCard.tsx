@@ -26,7 +26,10 @@ export default function SingleCard(props: {
   }
 
   return (
-    <div className="p-4 my-3 bg-light col-10">
+    <div
+      style={{ boxShadow: "0px 2px 2px rgba(17,17,26,0.1)", width: "90%" }}
+      className="p-3 mt-3 col-10 rounded searchbg"
+    >
       <div className="d-flex flex-row ">
         <img
           style={{ width: "40px", height: "40px" }}
@@ -34,39 +37,58 @@ export default function SingleCard(props: {
           src={props.imagem}
         />
         <div className="d-flex flex-column">
-          <p>{props.nome}</p>
-          <strong className="">{props.cargo}</strong>
+          <p style={{ fontSize: "12px" }} className="ps-2">
+            {props.nome}
+          </p>
         </div>
+      </div>
+      <div className="py-3">
+        <strong style={{ fontSize: "12px" }}>{props.cargo}</strong>
       </div>
       <div className="d-flex flex-row align-items-center">
         <img
-          className="me-2 mb-3"
+          className="me-2 mb-2"
           style={{ width: "15px", height: "15px" }}
           alt="Nível"
           src={personIcon}
         />
-        <p>{props.nivel}</p>
+        <p style={{ fontSize: "12px", marginBottom: "5px", fontWeight: "300" }}>
+          {props.nivel}
+        </p>
       </div>
       <div className="d-flex flex-row align-items-center">
         <img
-          className="me-2 mb-3"
+          className="me-2 mb-2"
           style={{ width: "15px", height: "15px" }}
           alt="Periodo"
           src={AccessAlarmIcon}
         />
-        <p>{props.periodo}</p>
+        <p style={{ fontSize: "12px", marginBottom: "5px", fontWeight: "300" }}>
+          {props.periodo}
+        </p>
       </div>
       <div className="d-flex flex-row align-items-center">
         <img
-          className="me-2 mb-3"
+          className="me-2 mb-2"
           style={{ width: "15px", height: "15px" }}
           alt="Local"
           src={LocationOnOutlinedIcon}
         />
-        <p>{props.local}</p>
+        <p style={{ fontSize: "12px", marginBottom: "5px", fontWeight: "300" }}>
+          {props.local}
+        </p>
       </div>
-
-      <small>{opportunityDay()} </small>
+      <div className="pt-4">
+        <small
+          style={{
+            fontSize: "0.65rem",
+            fontFamily: "roboto",
+            fontWeight: "300",
+          }}
+        >
+          {opportunityDay()}{" "}
+        </small>
+      </div>
     </div>
   );
 }
