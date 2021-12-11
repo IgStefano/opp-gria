@@ -1,3 +1,5 @@
+// Como estou trabalhando com mock, não houve como implementar algum tipo de query ou search para diferenciar o código e renderizar apenas a página correta. Dessa forma, criei um segundo componente para mostrar a segunda página de empresas. Ela não possui uma funcionalidade de busca pela necessidade de re-renderização, mas de outra forma é idêntica à página original, mudando apenas os referenciais de página (pageRef e currentPage).
+
 import { useState, useRef } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Navbar from "./Navbar";
@@ -87,7 +89,9 @@ export default function Opportunities() {
           />
         </div>
       </div>
-      <PageBrowser pageRef={pageRef} />
+      <footer>
+        <PageBrowser pageRef={pageRef} />
+      </footer>
     </div>
   );
 }

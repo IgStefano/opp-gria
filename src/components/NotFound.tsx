@@ -1,6 +1,8 @@
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 
+// Função cuja única responsabilidade é redirecionar para a página principal caso uma rota inexistente seja acessada
+
 export default function NotFound() {
   const navigate = useNavigate();
 

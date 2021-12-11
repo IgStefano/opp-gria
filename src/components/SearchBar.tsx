@@ -11,6 +11,7 @@ export default function SearchBar(props: {
   const [inputByName, setInputByName] = useState("");
   const [inputByPlace, setInputByPlace] = useState("");
 
+  // Funções que lidam com os inputs nas barras de pesquisa
   function handleChangeByName(event: any) {
     setInputByName(event.target.value);
   }
@@ -19,6 +20,7 @@ export default function SearchBar(props: {
     setInputByPlace(event.target.value);
   }
 
+  // Função que limpa os filtros e leva a página de volta ao estado padrão
   function resetFilters() {
     setInputByName("");
     setInputByPlace("");
@@ -26,10 +28,12 @@ export default function SearchBar(props: {
     props.setOpportunityNumber(data.length);
   }
 
+  // Função que habilita os filtros
   function submitSearch(event: React.MouseEvent) {
     props.setSearchToggle(true);
   }
 
+  // Função que permite habilitar os filtros de dentro dos inputs
   function handleKeyPressSearch(event: any) {
     if (event.key === "Enter") {
       props.setSearchToggle(true);

@@ -6,6 +6,7 @@ import BusinessIcon from "@mui/icons-material/Business";
 export default function NavBar() {
   const [showMenu, setShowMenu] = useState(false);
 
+  // Função que lida com fechar e abrir o menu ao clicar em "login". Quando no formato de hambúrguer, ela também lida com abrí-lo.
   function handleClick(event: React.MouseEvent) {
     event.preventDefault();
     setShowMenu(!showMenu);
@@ -95,6 +96,7 @@ export default function NavBar() {
                         color: "white",
                       }}
                     >
+                      {/* Quando no formato de hambúrguer, o botão "oportunidades" é omitido e o login de "usuário" e "empresa" são substituídos por ícones que os representam */}
                       <AccountCircleIcon />
                     </li>
                     <li
