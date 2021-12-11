@@ -3,6 +3,8 @@ import LocationOnOutlinedIcon from "../assets/images/location.png";
 import personIcon from "../assets/images/person_icon.95c4e732.svg";
 const moment = require("moment");
 
+// Componente responsável por agregar e renderizar um card a partir dos dados recebidos do banco de dados
+
 export default function SingleCard(props: {
   nome: string;
   cargo: string;
@@ -12,6 +14,7 @@ export default function SingleCard(props: {
   data: string;
   imagem: string;
 }) {
+  // Função que calcula quantos dias desde que a oportunidade foi publicada e renderiza uma frase diferente caso tenha sido publicada no mesmo dia ou no dia anterior.
   function opportunityDay() {
     const date = moment(props.data);
     const today = Date.now();

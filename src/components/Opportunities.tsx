@@ -6,13 +6,19 @@ import AllCards from "./AllCards";
 import data from "../mock-json/mock.json";
 import PageBrowser from "./PageBrowser";
 
+// Componente agregador de todos os outros
+
 export default function Opportunities() {
+  // Variável que mostra na tela a quantidade de vagas encontrada seguindo o número total ou o filtro utilizado pelo usuário
   const [opportunityNumber, setOpportunityNumber] = useState(data.length);
 
+  // Toggle para definir se uma busca está ou não sendo realizada (no false, mostra todas as opções). É atualizada para true ao clicar no botão "Pesquisar" e de volta para false ao clicar no botão "Limpar Filtros"
   const [searchToggle, setSearchToggle] = useState(false);
 
+  // Ref da página atual
   const pageRef = useRef(1);
 
+  // Função utilizada para retirar os acentos das letras (assim a busca retorna tanto "Junior" quanto "Júnior")
   function toNormalizeInput(input: string) {
     return input
       .toLowerCase()
@@ -20,11 +26,13 @@ export default function Opportunities() {
       .replace(/[\u0300-\u036f]/g, "");
   }
 
+  // Dois states diferentes para duas buscas diferentes; o primeiro que busca por nome da oportunidade, do cargo ou do nível. O segundo, pelo local. Possibilidade de feature futura seria acrescentar o nome da empresa no filtro.
   const [filteredCompaniesByName, setFilteredCompaniesByName] = useState([{}]);
   const [filteredCompaniesByPlace, setFilteredCompaniesByPlace] = useState([
     {},
   ]);
 
+  // Essa função cria uma array filtrada, comparando a forma normalizada do input do usuário com a forma normalizada dos dados no banco.
   function filterCompaniesByName(input: string) {
     const searchResultByName = data.filter(
       (currentCompany) =>
@@ -72,6 +80,7 @@ export default function Opportunities() {
                 paddingBottom: "3px",
               }}
             >
+              {/* Aqui, está sendo sublinhado */}
               Encontra
             </span>
             mos {opportunityNumber} oportunidades cadastradas
@@ -87,7 +96,9 @@ export default function Opportunities() {
           />
         </div>
       </div>
-      <PageBrowser pageRef={pageRef} />
+      <footer>
+        <PageBrowser pageRef={pageRef} />
+      </footer>
     </div>
   );
 }
