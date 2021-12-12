@@ -25,7 +25,7 @@ export default function AllCards(props: {
       <div
         key={currentCompany.nome}
         className="col-lg-3 col-md-4 col-sm-6 col-xs-12
-        d-flex justify-content-between rounded"
+        d-flex justify-content-between cardMobile rounded"
       >
         <SingleCard
           nome={currentCompany.nome}
@@ -44,7 +44,7 @@ export default function AllCards(props: {
     return (
       <div
         key={currentCompany.nome}
-        className="col-lg-3 col-md-4 col-sm-6 col-xs-12 cardMobile w-100"
+        className="col-lg-3 col-md-4 col-sm-6 col-xs-12 cardMobile"
       >
         <SingleCard
           nome={currentCompany.nome}
